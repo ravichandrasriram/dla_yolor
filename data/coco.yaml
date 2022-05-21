@@ -1,6 +1,6 @@
 # train and val datasets (image directory or *.txt file with image paths)
-train: ../Clinical_Reports/train_dla.txt  # 118k images
-val: ../Clinical_Reports/validation_dla.txt  # 5k images
+train: /content/Clinical_Reports/train_dla.txt  # 118k images
+val: ./content/Clinical_Reports/validation_dla.txt  # 5k images
 test: ../coco/test-dev2017.txt  # 20k images for submission to https://competitions.codalab.org/competitions/20794
 
 # number of classes
