@@ -350,7 +350,7 @@ class YOLOLayer(nn.Module):
         self.nx, self.ny, self.ng = 0, 0, 0  # initialize number of x, y gridpoints
         self.anchor_vec = self.anchors / self.stride
         self.anchor_wh = self.anchor_vec.view(1, self.na, 1, 1, 2)
-        logger.info(' no of classes = %g ' self.nc )
+        logger.info(' no of classes = %g ' % self.nc )
 
         if ONNX_EXPORT:
             self.training = False
