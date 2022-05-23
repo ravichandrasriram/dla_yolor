@@ -5,7 +5,7 @@ from utils import torch_utils
 
 ONNX_EXPORT = False
 
-
+logger = logging.getLogger(__name__)
 def create_modules(module_defs, img_size, cfg):
     # Constructs module list of layer blocks from module configuration in module_defs
 
