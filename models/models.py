@@ -5,7 +5,7 @@ from utils import torch_utils
 
 ONNX_EXPORT = False
 
-logger = logging.getLogger(__name__)
+
 def create_modules(module_defs, img_size, cfg):
     # Constructs module list of layer blocks from module configuration in module_defs
 
@@ -350,7 +350,7 @@ class YOLOLayer(nn.Module):
         self.nx, self.ny, self.ng = 0, 0, 0  # initialize number of x, y gridpoints
         self.anchor_vec = self.anchors / self.stride
         self.anchor_wh = self.anchor_vec.view(1, self.na, 1, 1, 2)
-        logger.info(' no of classes = %g ' % self.nc )
+        
 
         if ONNX_EXPORT:
             self.training = False
@@ -398,7 +398,6 @@ class YOLOLayer(nn.Module):
                 self.create_grids((nx, ny), p.device)
 
         # p.view(bs, 255, 13, 13) -- > (bs, 3, 13, 13, 85)  # (bs, anchors, grid, grid, classes + xywh)
-        logger.info(' na = %g no = %g ny = %g nx = %g' % (self.na, self.no, self.ny, self.nx) )
         p = p.view(bs, self.na, self.no, self.ny, self.nx).permute(0, 1, 3, 4, 2).contiguous()  # prediction
 
         if self.training:
